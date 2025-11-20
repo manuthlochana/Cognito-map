@@ -16,14 +16,14 @@ export async function GET(req: NextRequest) {
         });
 
         // Format for React Flow
-        const flowNodes = nodes.map(n => ({
+        const flowNodes = nodes.map((n: { id: string; label: string; type: string }) => ({
             id: n.id,
             data: { label: n.label, type: n.type },
             position: { x: Math.random() * 500, y: Math.random() * 500 }, // Random position for now, layouting can be improved
             type: 'default' // or custom type
         }));
 
-        const flowEdges = edges.map(e => ({
+        const flowEdges = edges.map((e: { id: string; sourceId: string; targetId: string; relationship: string }) => ({
             id: e.id,
             source: e.sourceId,
             target: e.targetId,
